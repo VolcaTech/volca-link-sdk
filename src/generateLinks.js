@@ -2,7 +2,6 @@ const utils = require('./utils');
 const HOST = 'https://volca.app';
 
 
-
 /**
  * @desc Generate claim link.
  * @param  {String}  [contractAddress] - Airdrop Contract address
