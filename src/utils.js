@@ -2,7 +2,6 @@ const PAromise = require('bluebird');
 const Wallet = require('ethereumjs-wallet');
 const Web3Utils = require('web3-utils');
 const util = require("ethereumjs-util");
-//const erc20abi = require('human-standard-token-abi');
 
 const SIGNATURE_PREFIX = "\x19Ethereum Signed Message:\n32";
 
