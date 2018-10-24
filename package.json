@@ -10,11 +10,25 @@
     "test": "test/index.js"
   },
   "author": "Mikhail Dobrokhvalov",
-  "license": "GPL-3",
+  "license": "GPL-3.0",
   "dependencies": {
     "bluebird": "^3.5.2",
     "ethereumjs-util": "^6.0.0",
     "ethereumjs-wallet": "^0.6.2",
     "web3-utils": "^1.0.0-beta.36"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VolcaTech/volca-link-generator.git"
+  },
+  "keywords": [
+    "linkdrop",
+    "NFT",
+    "erc721"
+  ],
+  "bugs": {
+    "url": "https://github.com/VolcaTech/volca-link-generator/issues"
+  },
+  "homepage": "https://github.com/VolcaTech/volca-link-generator#readme"
 }

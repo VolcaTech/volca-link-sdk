@@ -4,7 +4,7 @@ Node.js Library to generate claiming links
 
 ## Installation
 ```bash
-npm i --save https://github.com/VolcaTech/volca-link-generator
+npm i --save git+https://github.com/VolcaTech/volca-link-generator#v0.1
 ```
 ## Usage
 ### Generating claim link
