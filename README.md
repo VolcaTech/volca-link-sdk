@@ -27,3 +27,5 @@ const linkGenerator = LinkGenerator({
 const tokenId = 1;  // nft id, e.g. 1    
 const claimLink = linkGenerator.generateLinkNFT(tokenId);
 ```
+### Supported Networks
+Currently Mainnet and Ropsten networks are supported
