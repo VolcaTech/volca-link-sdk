@@ -13,7 +13,7 @@ To deploy Linkdrop Smart Contract follow the guide - https://medium.com/@m.dobro
 ### 2. Generate claim link
 ```js
 //  import library                                                                                     
-const linkGenerator = require('volca-link-generator');
+const LinkGenerator = require('volca-link-generator');
 
 // init link generator                                                                                                                     
 const linkGenerator = LinkGenerator({                         
