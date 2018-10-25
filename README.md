@@ -1,5 +1,5 @@
 # Volca link generator
-Node.js Library to generate claiming links
+Node.js Library to generate clai links
 
 
 ## Installation
@@ -7,7 +7,10 @@ Node.js Library to generate claiming links
 npm i --save git+https://github.com/VolcaTech/volca-link-generator#v0.1
 ```
 ## Usage
-### Generating claim link
+### 1. Deploy Linkdrop Smart Contract
+To deploy Linkdrop Smart Contract follow the guide - https://medium.com/@m.dobrokhvalov/how-to-deploy-nft-linkdrop-73b2741c25d0
+
+### 2. Generate claim link
 ```js
 //  import library                                                                                     
 const linkGenerator = require('volca-link-generator');
