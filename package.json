@@ -1,6 +1,6 @@
 {
-  "name": "volca-link-generator",
-  "version": "0.1.0",
+  "name": "volca-link-sdk",
+  "version": "0.3.0",
   "description": "Library for generating claim links",
   "main": "src/index.js",
   "directories": {
@@ -15,6 +15,7 @@
     "bluebird": "^3.5.2",
     "ethereumjs-util": "^6.0.0",
     "ethereumjs-wallet": "^0.6.2",
+    "ethers": "^4.0.12",
     "web3-utils": "^1.0.0-beta.36"
   },
   "devDependencies": {},
