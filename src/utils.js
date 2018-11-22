@@ -26,7 +26,7 @@ const generateAccount = () => {
  * @return {'v': Number, 'r': String, 's': String} 
  */
 const _signWithPK = (privateKey, msg) => {
-    return util.ecsign(new Buffer(util.stripHexPrefix(msg), 'hex'), new Buffer(privateKey, 'hex'));
+    return util.ecsign(Buffer.from(util.stripHexPrefix(msg), 'hex'), Buffer.from(privateKey, 'hex'));
 }
 
 
