@@ -24,7 +24,7 @@ const generateClaimLinkNFT = ({ tokenId, verificationPK, contractAddress, host=H
 	link = `${link}&n=3`;
     }
     
-    return link;
+    return { link, linkId: address.toLowerCase()};
 }
 
 module.exports = { 
