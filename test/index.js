@@ -6,10 +6,10 @@ const test = () => {
 
     // init link generator
     const volcaLinkSDK = VolcaLinkSDK({
-	verificationPK: 'b3c47b3bf28e7d6d38550d9e83a45217156a909627e88cbbb8f378e22993c4b7',
-	contractAddress: '0xce5579a97be98d6ed943560389819aafbc7f229c',
-	networkId: '3',
-	host: 'https://snark-art.volca.tech'
+	    verificationPK: 'b3c47b3bf28e7d6d38550d9e83a45217156a909627e88cbbb8f378e22993c4b7',
+    	contractAddress: '0xce5579a97be98d6ed943560389819aafbc7f229c',
+    	networkId: '3',
+    	host: 'https://snark-art.volca.tech'
     });
 
     // Usage example:
@@ -20,8 +20,8 @@ const test = () => {
     
     // subscribe for claim events
     volcaLinkSDK.subscribeForClaimEventsNFT((linkId, tokenId, receiver, timestamp, event) => {
-	console.log("got event " +  tokenId);
-	console.log({linkId, tokenId, receiver, timestamp, event});
+	    console.log("got event " +  tokenId);
+    	console.log({linkId, tokenId, receiver, timestamp, event});
     });
 }
 
