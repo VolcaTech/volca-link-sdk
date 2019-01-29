@@ -6,11 +6,11 @@ Node.js Library to generate clai links
 ```bash
 npm i --save git+https://github.com/VolcaTech/volca-link-sdk#v0.3
 ```
-## Usage
+## Usage (ERC20)
 ### 1. Deploy Linkdrop Smart Contract
-To deploy Linkdrop Smart Contract follow the guide - https://medium.com/@m.dobrokhvalov/how-to-deploy-nft-linkdrop-73b2741c25d0
+To deploy Linkdrop Smart Contract follow the guide - https://medium.com/volc%C3%A0/how-to-deploy-an-erc20-linkdrop-fe3e4849ad40
 
-### 2. Generate claim link
+### 2. Generate claim links
 ```js
 // import library
 const VolcaLinkSDK = require('volca-link-sdk');
@@ -23,22 +23,33 @@ const volcaLinkSDK = VolcaLinkSDK({
  });
 
 // Usage example:
-
-// ERC20
-//
 // Generate link
-const { link:linkERC20, linkId: linkIdERC20 } = volcaLinkSDK.generateLinkERC20(tokenId);
+const { link:linkERC20, linkId: linkIdERC20 } = volcaLinkSDK.generateLinkERC20();
 console.log({linkERC20, linkIdERC20});
 //
 // subscribe for ERC20 claim events
 volcaLinkSDK.subscribeForClaimEventsERC20((linkId, receiver, timestamp, event) => {
-  console.log("got event " +  tokenId);
   console.log({linkId, receiver, timestamp, event});
 });
+```
 
+## Usage (NFT)
+### 1. Deploy Linkdrop Smart Contract
+To deploy Linkdrop Smart Contract follow the guide - https://medium.com/@m.dobrokhvalov/how-to-deploy-nft-linkdrop-73b2741c25d0
 
-// NFT
-//
+### 2. Generate claim links
+```js
+// import library
+const VolcaLinkSDK = require('volca-link-sdk');
+
+const volcaLinkSDK = VolcaLinkSDK({
+    verificationPK: <VERIFICATION_PRIVATE_KEY>,
+    contractAddress: <LINKDROP_CONTRACT>,
+    networkId: <NETWORK_ID>, // '1' - mainnet or '3' - ropsten
+    host: <HOST> // host for generated links, by default it's 'https://volca.app'
+ });
+
+// Usage example
 // Generating claim link for tokenId #1
 const tokenId = 5;  // nft id, e.g. 1
 const { link, linkId } = volcaLinkSDK.generateLinkNFT(tokenId);
