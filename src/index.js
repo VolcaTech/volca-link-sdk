@@ -1,6 +1,7 @@
 const linkUtils = require('./generateLinks');
 const eventListener = require('./eventListener');
-const { ABI } = require('./metadata/linkdropNFT');
+const { ABI:NFT_LINKDROP_ABI } = require('./metadata/linkdropNFT');
+const { ABI:ERC20_LINKDROP_ABI } = require('./metadata/linkdropERC20');
 
 // library api
 const LinkSDK = ({ verificationPK, contractAddress, networkId=1, host="https://volca.app" }) => {
@@ -9,6 +10,7 @@ const LinkSDK = ({ verificationPK, contractAddress, networkId=1, host="https://v
     let _contractAddress = contractAddress;
     let _networkId = networkId;
     let _host = host;
+
     
     const generateLinkNFT = (tokenId) => {
 	return linkUtils.generateClaimLinkNFT({
@@ -37,14 +39,18 @@ const LinkSDK = ({ verificationPK, contractAddress, networkId=1, host="https://v
 	eventListener.subscribeForClaimEventsERC20(_contractAddress, _networkId, cb);
     };
 
-    
+    const isLinkClaimed = (linkId) => {
+	return eventListener.isLinkClaimed(linkId, _contractAddress, _networkId);
+    }
     
     return {
 	generateLinkERC20,
 	subscribeForClaimEventsERC20,
 	generateLinkNFT,
 	subscribeForClaimEventsNFT,
-	NFT_LINKDROP_ABI: ABI
+	isLinkClaimed,
+	NFT_LINKDROP_ABI,
+	ERC20_LINKDROP_ABI
     };
 }
 

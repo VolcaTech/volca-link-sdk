@@ -1,7 +1,7 @@
 const VolcaLinkSDK = require('./../src');
 
 
-const test = () => { 
+const test = async () => { 
     console.log("here");
 
     // init link generator
@@ -39,10 +39,13 @@ const test = () => {
     // 	console.log({linkId, receiver, timestamp, event});
     // });
 
+    // import library
+    //const VolcaLinkSDK = require('volca-link-sdk');
+
     // init link generator
     const volcaLinkSDK = VolcaLinkSDK({
-	verificationPK: '034fff60f00d630ab75ddeedd61378801895dda9b0c9c8970d150558601e938a',
-	contractAddress: '0x8c047b216078c3139a4460b87c7b700e6abf5b93',
+	verificationPK: '7038c4e7f3e2dabd326fded038175bf7d2eb9bd714d934b454e237d14d38d23a',
+	contractAddress: '0x3fcd36c8e35fddd2f63a33750bd17757a2f1738e',
 	networkId: '3',
 	host: 'https://volca.app'
     });
@@ -50,7 +53,10 @@ const test = () => {
     // USAGE EXAMPLE:
     // Generating claim link for tokenId #1
     const { link, linkId } = volcaLinkSDK.generateLinkERC20();
-    console.log({ link, linkId });
+    console.log({link, linkId });
+
+    const linkClaimed = await volcaLinkSDK.isLinkClaimed("0x76bf9cd0460d3a0a141663a9b371c904cc562de6");
+    console.log({linkClaimed})
     
     // subscribe for claim events
     console.log("Subscribing for claim events");
