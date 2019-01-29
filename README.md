@@ -4,7 +4,7 @@ Node.js Library to generate clai links
 
 ## Installation
 ```bash
-npm i --save git+https://github.com/VolcaTech/volca-link-sdk#v0.2
+npm i --save git+https://github.com/VolcaTech/volca-link-sdk#v0.3
 ```
 ## Usage
 ### 1. Deploy Linkdrop Smart Contract
@@ -15,25 +15,42 @@ To deploy Linkdrop Smart Contract follow the guide - https://medium.com/@m.dobro
 // import library
 const VolcaLinkSDK = require('volca-link-sdk');
 
-// init link generator
 const volcaLinkSDK = VolcaLinkSDK({
-    verificationPK: '2d61a347f1f5abfb1159f907ada79982d50f80404c59af634444bfa417d49bae',
-    contractAddress: '0xc6c1bf3f603a71e07a098b7ead7a00dee64c10ed',
-    networkId: '3',
-    host: 'https://volca.app'
+    verificationPK: <VERIFICATION_PRIVATE_KEY>,
+    contractAddress: <LINKDROP_CONTRACT>,
+    networkId: <NETWORK_ID>, // '1' - mainnet or '3' - ropsten
+    host: <HOST> // host for generated links, by default it's 'https://volca.app'
+ });
+
+// Usage example:
+
+// ERC20
+//
+// Generate link
+const { link:linkERC20, linkId: linkIdERC20 } = volcaLinkSDK.generateLinkERC20(tokenId);
+console.log({linkERC20, linkIdERC20});
+//
+// subscribe for ERC20 claim events
+volcaLinkSDK.subscribeForClaimEventsERC20((linkId, receiver, timestamp, event) => {
+  console.log("got event " +  tokenId);
+  console.log({linkId, receiver, timestamp, event});
 });
 
-// USAGE EXAMPLE:
-// Generating claim link for tokenId #1                                                                                                                                              
-const tokenId = 1;  // nft id, e.g. 1
+
+// NFT
+//
+// Generating claim link for tokenId #1
+const tokenId = 5;  // nft id, e.g. 1
 const { link, linkId } = volcaLinkSDK.generateLinkNFT(tokenId);
 console.log({link, linkId});
-
-// subscribe for claim events
-console.log("Subscribing for claim events");
+//
+// subscribe for NFT claim events
 volcaLinkSDK.subscribeForClaimEventsNFT((linkId, tokenId, receiver, timestamp, event) => {
-    console.log({linkId, tokenId, receiver, timestamp, event});
+  console.log("got event " +  tokenId);
+  console.log({linkId, tokenId, receiver, timestamp, event});
 });
+
+
 ```
 ### Supported Networks
 Currently Mainnet and Ropsten networks are supported
