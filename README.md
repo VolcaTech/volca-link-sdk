@@ -6,7 +6,7 @@ Node.js Library to generate clai links
 ```bash
 npm i --save git+https://github.com/VolcaTech/volca-link-sdk#v0.3
 ```
-## Usage (ERC20)
+## ERC20 Linkdrop
 ### 1. Deploy Linkdrop Smart Contract
 To deploy Linkdrop Smart Contract follow the guide - https://medium.com/volc%C3%A0/how-to-deploy-an-erc20-linkdrop-fe3e4849ad40
 
@@ -23,17 +23,24 @@ const volcaLinkSDK = VolcaLinkSDK({
  });
 
 // Usage example:
-// Generate link
+// Generating link
 const { link:linkERC20, linkId: linkIdERC20 } = volcaLinkSDK.generateLinkERC20();
 console.log({linkERC20, linkIdERC20});
 //
-// subscribe for ERC20 claim events
+//
+//
+// subscribing for ERC20 claim events
 volcaLinkSDK.subscribeForClaimEventsERC20((linkId, receiver, timestamp, event) => {
   console.log({linkId, receiver, timestamp, event});
 });
+//
+// checking by linkId if link was claimed 
+const linkClaimed = volcaLinkSDK.isLinkClaimed(linkId).then((linkClaimed) => {
+  console.log({linkClaimed})
+}); 
 ```
 
-## Usage (NFT)
+## NFT Linkdrop
 ### 1. Deploy Linkdrop Smart Contract
 To deploy Linkdrop Smart Contract follow the guide - https://medium.com/@m.dobrokhvalov/how-to-deploy-nft-linkdrop-73b2741c25d0
 

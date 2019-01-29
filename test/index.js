@@ -1,10 +1,9 @@
 const VolcaLinkSDK = require('./../src');
 
 
-const test = () => { 
+const test = async () => { 
     console.log("here");
 
-    // init link generator
     const volcaLinkSDK = VolcaLinkSDK({
       verificationPK: '034fff60f00d630ab75ddeedd61378801895dda9b0c9c8970d150558601e938a',
       contractAddress: '0xce5579a97be98d6ed943560389819aafbc7f229c',
@@ -12,8 +11,12 @@ const test = () => {
        	host: 'https://volca.app'
      });
 
-    // Usage example:
-    // Generating claim link for tokenId #1
+    const { link, linkId } = volcaLinkSDK.generateLinkERC20();
+    console.log({link, linkId });
+
+    const linkClaimed = await volcaLinkSDK.isLinkClaimed(linkId);
+    console.log({linkClaimed})
+
     const tokenId = 5;  // nft id, e.g. 1
     const { link, linkId } = volcaLinkSDK.generateLinkNFT(tokenId);
     console.log("NFT link: ");
@@ -26,6 +29,9 @@ const test = () => {
     console.log({linkERC20, linkIdERC20});
     console.log("---------");
     console.log("");
+
+
+
     
     // subscribe for NFT claim events
     volcaLinkSDK.subscribeForClaimEventsNFT((linkId, tokenId, receiver, timestamp, event) => {

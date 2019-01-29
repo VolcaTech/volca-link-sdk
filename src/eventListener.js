@@ -17,7 +17,17 @@ const subscribeForClaimEventsERC20 = (linkdropAddress, networkId, callback) =>  
 }
 
 
+const isLinkClaimed = (linkId, linkdropAddress, networkId) =>  {
+    const network = String(networkId) === "3" ? "ropsten" : "mainnet";
+    const provider = ethers.getDefaultProvider(network);
+    const contract = new ethers.Contract(linkdropAddress, LINKDROP_ERC20_ABI, provider);    
+    return contract.isLinkClaimed(linkId);
+}
+
+
+
 module.exports = {
+    isLinkClaimed,
     subscribeForClaimEventsNFT,
     subscribeForClaimEventsERC20
 }
