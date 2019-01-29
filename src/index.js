@@ -23,9 +23,25 @@ const LinkSDK = ({ verificationPK, contractAddress, networkId=1, host="https://v
     const subscribeForClaimEventsNFT = (cb) => {
 	eventListener.subscribeForClaimEventsNFT(_contractAddress, _networkId, cb);
     };
+
+    const generateLinkERC20 = () => {
+	return linkUtils.generateClaimLinkERC20({
+	    contractAddress: _contractAddress,
+	    verificationPK: _verificationPK,
+	    networkId: _networkId,
+	    host: _host
+	});
+    };
+
+    const subscribeForClaimEventsERC20 = (cb) => {
+	eventListener.subscribeForClaimEventsERC20(_contractAddress, _networkId, cb);
+    };
+
     
     
     return {
+	generateLinkERC20,
+	subscribeForClaimEventsERC20,
 	generateLinkNFT,
 	subscribeForClaimEventsNFT,
 	NFT_LINKDROP_ABI: ABI
