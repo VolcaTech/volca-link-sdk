@@ -1,5 +1,5 @@
 # Volca link generator
-Node.js Library to generate clai links
+Node.js Library to generate claim links
 
 
 ## Installation
